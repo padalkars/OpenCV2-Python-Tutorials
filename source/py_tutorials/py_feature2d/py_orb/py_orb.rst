@@ -73,3 +73,32 @@ Additional Resources
 
 Exercises
 ==============
+Some changes to be made if you are using OpenCV 3.0.0. with python 2.7 on an Ubuntu machine.
+Here is a code which extracts ORB features from an image and draws the ORB key-points.
+
+    import cv2
+    from matplotlib import pyplot as plt
+
+    img = cv2.imread('simple.jpg',0)
+
+    # Initiate STAR detector
+    orb = cv2.ORB()
+
+    # find the keypoints with ORB
+    kp = orb.detect(img,None)
+
+    # compute the descriptors with ORB
+    kp, des = orb.compute(img, kp)
+
+    # draw only keypoints location,not size and orientation
+    img3 = np.zeos((1,1))
+    img2 = cv2.drawKeypoints(img,kp,img3,color=(0,255,0), flags=0)
+    while(True):
+                                         
+                     cv2.imshow("Orignal Image",img)
+                     cv2.imshow("Extracted Keypoints",img2)
+                     #plt.imshow(img2),plt.show()
+                     k = cv2.waitKey(0) & 0xffff
+                     if(k==27):
+                                   break
+This worked for the above mentioned configurations and installations.
